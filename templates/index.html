@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Level Secure Image and Text Encryption</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<h1>🔐 Multi-Level Secure Image and Text Encryption</h1>
+
+<form action="/encrypt" method="POST" enctype="multipart/form-data">
+
+<label>Select Image</label><br>
+<input type="file" name="image" required>
+
+<label>Enter Secret Message</label><br>
+<textarea name="message" rows="5" required></textarea>
+
+<input type="submit" value="Encrypt">
+
+</form>
+
+<br>
+
+<form action="/decrypt" method="POST">
+    <input type="submit" value="Decrypt">
+</form>
+
+{% if result %}
+<div class="result">
+<h2>Encrypted Message</h2>
+<p>{{ result }}</p>
+</div>
+{% endif %}
+
+{% if success %}
+<p class="success">{{ success }}</p>
+{% endif %}
+
+{% if decrypted %}
+<div class="result">
+<h2>Decrypted Message</h2>
+<p>{{ decrypted }}</p>
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
